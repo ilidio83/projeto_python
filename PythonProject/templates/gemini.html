@@ -1,0 +1,126 @@
+{% extends "modelo.html" %} {# Garanta que este seja o nome correto do seu arquivo base #}
+
+{% block conteudo %}
+{# AS TAGS <head> E <body> JÁ SÃO FORNECIDAS POR 'modelo.html', NÃO DEVEM SER REPETIDAS AQUI FORA DO ESTILO INLINE #}
+
+    <style>
+
+        body {
+            background-color: #0d0a1b;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #1a0d2a;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(162, 89, 255, 0.4);
+            border: 1px solid #a259ff;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-header {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #a259ff;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #a259ff;
+            padding-bottom: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-size: 1.2rem;
+            color: #c9b3e6;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control {
+            background-color: #26153b;
+            color: #e0e0e0;
+            border: 1px solid #a259ff;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1.1rem;
+        }
+
+        .form-control:focus {
+            background-color: #2e1a47;
+            border-color: #a259ff;
+            box-shadow: 0 0 0 0.25rem rgba(162, 89, 255, 0.5);
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #a259ff;
+            border-color: #a259ff;
+            color: #ffffff;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #8c47e0;
+            border-color: #8c47e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(162, 89, 255, 0.6);
+        }
+
+        .response-box {
+            margin-top: 40px;
+            background-color: #26153b;
+            border: 1px solid #a259ff;
+            border-radius: 8px;
+            padding: 25px;
+            min-height: 150px;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(162, 89, 255, 0.3);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.6; /
+        }
+
+        .response-box p {
+            margin: 0;
+            color: #ffffff;
+        }
+    </style>
+{# As tags <head> e <body> foram removidas daqui para evitar duplicidade #}
+    <div class="chat-container">
+        <h1 class="chat-header">Chat com IA</h1>
+
+        <form action="{{ url_for('gemini') }}" method="POST">
+            <div class="form-group">
+                <label for="pergunta" class="form-label">Sua Pergunta:</label>
+                <textarea class="form-control" id="pergunta" name="pergunta" rows="5" placeholder="Digite sua pergunta aqui..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Perguntar</button>
+        </form>
+
+        {% if Resposta %}
+            <div class="response-box">
+                <p><strong>Resposta da IA:</strong></p>
+                <p>{{ Resposta }}</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

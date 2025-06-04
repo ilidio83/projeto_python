@@ -1,0 +1,87 @@
+<{% extends "modelo.html" %} {# Isso herda a estrutura base, incluindo o cabeçalho e o menu #}
+
+{% block conteudo %}
+
+<style>
+
+    .container {
+        max-width: 600px;
+        margin-top: 50px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(162, 89, 255, 0.4);
+        padding: 40px;
+        background-color: #1a0d2a;
+        border: 1px solid #a259ff;
+        color: #e0e0e0;
+    }
+    h2 {
+        color: #a259ff;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #a259ff;
+        padding-bottom: 10px;
+    }
+    .form-label {
+        color: #c9b3e6;
+        font-size: 1.1rem;
+    }
+    .form-control {
+        background-color: #26153b;
+        color: #e0e0e0;
+        border: 1px solid #a259ff;
+        border-radius: 8px;
+    }
+    .form-control:focus {
+        background-color: #2e1a47;
+        border-color: #a259ff;
+        box-shadow: 0 0 0 0.25rem rgba(162, 89, 255, 0.5);
+        color: #ffffff;
+    }
+    .btn-primary {
+        background-color: #a259ff;
+        border-color: #a259ff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-primary:hover {
+        background-color: #8c47e0;
+        border-color: #8c47e0;
+        transform: translateY(-2px);
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #5a6268;
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="container">
+    <h2 class="mb-4">Alterar Termo do Glossário</h2>
+
+    <form action="{{ url_for('alterar_termo', termo_id=termo['id']) }}" method="POST">
+        <div class="mb-3">
+            <label for="termo" class="form-label">Termo:</label>
+            <input type="text" class="form-control" id="termo" name="termo" value="{{ termo['termo'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="definicao" class="form-label">Definição:</label>
+            <textarea class="form-control" id="definicao" name="definicao" rows="3" required>{{ termo['definicao'] }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <a href="{{ url_for('glossario') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{# Removido: <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> #}
+{# O script do Bootstrap já é carregado por modelo.html #}
+{% endblock %}

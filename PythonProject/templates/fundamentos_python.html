@@ -1,0 +1,148 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 0 20px 40px;
+    }
+    header {
+      background: linear-gradient(90deg, #4b367c 0%, #3a2a72 100%);
+      padding: 30px 20px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 10px rgb(58 42 114 / 0.7);
+      margin-bottom: 30px;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+    section {
+      max-width: 900px;
+      background: #1e1e2f;
+      margin: 0 auto 40px;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.8);
+    }
+    section h2 {
+      color: #b9aaff;
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #91a7ff;
+      padding-bottom: 8px;
+    }
+    .concept, .application {
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      color: #d0d0ff;
+    }
+    pre {
+      background: #2d2d44;
+      color: #c5c8ff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem;
+      user-select: text;
+      box-shadow: inset 0 0 10px #000000a0;
+    }
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 0 12px 30px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      section {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+<body>
+  <header>
+    <h1>Conceitos Básicos de Python</h1>
+  </header>
+  <main>
+    <section id="selecao" tabindex="-1">
+      <h2>Estruturas de Seleção</h2>
+      <p class="concept"><strong>Conceito:</strong> Permitem que o programa tome decisões com base em condições.</p>
+      <p class="application"><strong>Aplicação:</strong> Usadas para executar blocos de código diferentes dependendo de condições avaliadas.</p>
+      <pre><code>idade = int(input("Digite sua idade: "))
+if idade &lt; 18:
+    print("Você é menor de idade.")
+elif idade &lt; 65:
+    print("Você é adulto.")
+else:
+    print("Você é idoso.")</code></pre>
+    </section>
+
+    <section id="repeticao" tabindex="-1">
+      <h2>Estruturas de Repetição</h2>
+      <p class="concept"><strong>Conceito:</strong> Permitem que um bloco de código seja executado várias vezes.</p>
+      <p class="application"><strong>Aplicação:</strong> Usadas para iterar sobre sequências, repetir ações enquanto uma condição for verdadeira, ou até certo número de vezes.</p>
+      <pre><code>for i in range(5):
+    print(f"Contagem: {i + 1}")
+
+contador = 0
+while contador &lt; 5:
+    print(f"Contagem: {contador + 1}")
+    contador += 1</code></pre>
+    </section>
+
+    <section id="vetores" tabindex="-1">
+      <h2>Vetores e Matrizes</h2>
+      <p class="concept"><strong>Conceito:</strong> Estruturas de dados que armazenam coleções de elementos em uma sequência ou em múltiplas dimensões.</p>
+      <p class="application"><strong>Aplicação:</strong> Utilizadas para armazenar diversos tipos de dados organizados, como listas (vetores) e listas de listas (matrizes).</p>
+      <pre><code># Vetor (lista)
+vetor = [1, 2, 3, 4, 5]
+print("Vetor:", vetor)
+
+# Matriz (lista de listas)
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print("Matriz:")
+for linha in matriz:
+    print(linha)</code></pre>
+    </section>
+
+    <section id="funcoes" tabindex="-1">
+      <h2>Funções e Procedimentos</h2>
+      <p class="concept"><strong>Conceito:</strong> Blocos reutilizáveis de código que realizam tarefas específicas.</p>
+      <p class="application"><strong>Aplicação:</strong> Usadas para organizar código, evitar repetição e facilitar manutenção.</p>
+      <pre><code>def soma(a, b):
+    return a + b
+
+resultado = soma(5, 3)
+print("Resultado da soma:", resultado)</code></pre>
+    </section>
+
+    <section id="excecoes" tabindex="-1">
+      <h2>Tratamento de Exceções</h2>
+      <p class="concept"><strong>Conceito:</strong> Mecanismo para lidar com erros que podem ocorrer durante a execução do programa.</p>
+      <p class="application"><strong>Aplicação:</strong> Usado para evitar que o programa seja interrompido e para fornecer respostas adequadas a erros.</p>
+      <pre><code>try:
+    numero = int(input("Digite um número: "))
+    print("Você digitou:", numero)
+except ValueError:
+    print("Erro: valor digitado não é um número válido.")</code></pre>
+    </section>
+  </main>
+</body>
+
+{% endblock %}
